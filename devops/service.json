@@ -13,7 +13,7 @@
       "docker": { "image": "mwrona/k8s-java-sample:1.0.0" }
     },
     "cpus": 0.5,
-    "instances": 1,
+    "instances": 2,
     "mem": 256,
     "networks": [ { "mode": "container/bridge" } ],
     "healthChecks": [
