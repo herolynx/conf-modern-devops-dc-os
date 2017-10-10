@@ -18,7 +18,11 @@ Pre-requisites:
 dcos marathon app add devops/service.json
 ```
 
-2) Deploy healthchecks
+2) Update application
+
+```
+dcos marathon app update /k8s-java-sample devops/service.json
+```
 
 ##### Basic operations
 
