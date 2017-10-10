@@ -1,0 +1,19 @@
+{
+    "id": "k8s-java-sample",
+    "acceptedResourceRoles": [ "slave_public" ],
+    "container": {
+      "portMappings": [
+        {
+          "containerPort": 8080,
+          "hostPort": 80,
+          "protocol": "tcp"
+        }
+      ],
+      "type": "DOCKER",
+      "docker": { "image": "mwrona/k8s-java-sample:1.0.0" }
+    },
+    "cpus": 0.5,
+    "instances": 1,
+    "mem": 256,
+    "networks": [ { "mode": "container/bridge" } ]
+   }
