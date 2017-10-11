@@ -72,6 +72,11 @@ vagrant up
 
 3) Access the UI using URL: `http://m1.dcos`
 
+
+Docs:
+
+* [Getting Started with DC/OS on Vagrant](https://oliverveits.wordpress.com/2017/04/15/getting-started-with-dcos-on-vagrant/)
+
 ##### Disable authentication. 
 
 DC/OS cluster uses external OAuth by default but it is more convenient to have it disabled for local testing.
@@ -85,13 +90,13 @@ echo "oauth_enabled: 'false'" >> etc/config-{version}.yaml
 1) Deploy application
 
 ```
-dcos marathon app add devops/app.json
+dcos marathon app add devops/service.json
 ```
 
 2) Update application's property
 
 ```
-dcos marathon app update /k8s-java-sample <property>=<value>
+dcos marathon app update /dcos-java-sample <property>=<value>
 ```
 
 ##### [Basic operations](https://docs.mesosphere.com/1.10/cli/command-reference/)
@@ -105,13 +110,13 @@ dcos marathon app list
 2) Scale application
 
 ```
-dcos marathon app update /k8s-java-sample instances=3
+dcos marathon app update /dcos-java-sample instances=3
 ```
 
 3) Check logs
 
 ```
-dcos task log --follow k8s-java-sample
+dcos task log --follow dcos-java-sample
 ```
 
 ##### [Other operations](https://docs.mesosphere.com/1.10/cli/command-reference/)
@@ -153,6 +158,12 @@ dcos marathon deployment list
 ```
 
 ## [Load Balancing and VIPs](https://dcos.io/docs/1.8/usage/service-discovery/load-balancing-vips/)
+
+0) Check options of marathon load-balancer
+
+```
+ dcos package describe --config marathon-lb
+```
 
 1) Install LB
 
