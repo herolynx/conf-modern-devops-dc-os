@@ -93,6 +93,12 @@ echo "oauth_enabled: 'false'" >> etc/config-{version}.yaml
 dcos marathon app add devops/service.json
 ```
 
+or if you want to try standalone option (without docker):
+
+```
+dcos marathon app add devops/service-no-docker.json
+```
+
 2) Update application's property
 
 ```
@@ -171,6 +177,24 @@ dcos marathon deployment list
 dcos package install marathon-lb
 ```
 
+2) Deploy sample `nginx` from `others/nginx-hostname-app.json`
+
+```
+dcos marathon app add others/nginx-hostname-app.json
+```
+
+and check sample output (for `Vagrant`) with `auto-refresh` option using browser:
+
+```
+http://192.168.65.60:10006/
+```
+
+or you can check internal address, from within your cluster:
+
+```
+curl http://marathon-lb.marathon.mesos:10006
+```
+
 Docs:
 
 * [Service discovery and load balancing with DCOS](https://mesosphere.com/blog/dcos-marathon-lb/)
@@ -194,3 +218,5 @@ ToDo: Comming soon
 ## Other docs
 
 * [DC/OS 101](https://dcos.io/docs/1.8/usage/tutorials/dcos-101/)
+
+* [How to scale-test your DCOS cluster](https://mesosphere.com/blog/scale-test-dcos-cluster/)
