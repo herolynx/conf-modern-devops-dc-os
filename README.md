@@ -58,19 +58,26 @@ Pre-requisites:
 * Maven
 * Java 8
 
-1) Set-up desired version
+1) Set-up desired version (optional)
 
 ```
+export DCOS_GENERATE_CONFIG_PATH=installers/dcos/dcos_generate_config-{version}-dev.sh
 export DCOS_CONFIG_PATH=etc/config-{version}.yaml
 ```
 
-2) Start the cluster
+2) Set cluster configuration
+
+```
+cp VagrantConfig-1m-1a-1p.yaml VagrantConfig.yaml
+```
+
+3) Start the cluster
 
 ```
 vagrant up
 ```
 
-3) Access the UI using URL: `http://m1.dcos`
+4) Access the UI using URL: `http://m1.dcos`
 
 
 Docs:
@@ -98,6 +105,12 @@ or if you want to try standalone option (without docker):
 ```
 dcos marathon app add devops/service-no-docker.json
 ```
+
+**Note**:
+
+Running a native java app requires that the application jar and the Java JRE be installed on the agent nodes. 
+
+For local `Vagrant` cluster use `DCOS_JAVA_ENABLED=true` when deploying the agent nodes to install both automatically (requires the JRE to be downloaded to <repo>/build/jre-*-linux-x64.tgz).
 
 2) Update application's property
 
@@ -174,7 +187,7 @@ dcos marathon deployment list
 1) Install LB
 
 ```
-dcos package install marathon-lb
+dcos package install marathon-lb --yes
 ```
 
 2) Deploy sample `nginx` from `others/nginx-hostname-app.json`
