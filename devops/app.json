@@ -1,5 +1,5 @@
 {
-    "id": "k8s-java-sample",
+    "id": "dcos-java-sample",
     "acceptedResourceRoles": [ "slave_public" ],
     "container": {
       "portMappings": [
@@ -10,7 +10,7 @@
         }
       ],
       "type": "DOCKER",
-      "docker": { "image": "mwrona/k8s-java-sample:1.0.0" }
+      "docker": { "image": "mwrona/dcos-java-sample:0.0.1" }
     },
     "cpus": 0.5,
     "instances": 2,
