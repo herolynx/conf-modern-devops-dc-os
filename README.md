@@ -15,7 +15,7 @@ Project structure:
 The purposes of this demo & presentation is to show how micro-services can be managed using DC/OS, thus following scenarios are covered:
 
 * deployment 
-* publishing 
+* publishing & LB 
 * rollback & rolling update
 * config management
 * web-socket support (with TCP connections load balancing)
@@ -94,7 +94,7 @@ echo "oauth_enabled: 'false'" >> etc/config-{version}.yaml
 
 ## DevOps 
 
-1) Deploy application
+1) Create application
 
 ```
 dcos marathon app add devops/service.json
@@ -104,6 +104,12 @@ dcos marathon app add devops/service.json
 
 ```
 dcos marathon app update /dcos-java-sample <property>=<value>
+```
+
+or using whole file:
+
+```
+dcos marathon app update /dcos-java-sample < devops/service.json
 ```
 
 ##### [Basic operations](https://docs.mesosphere.com/1.10/cli/command-reference/)
@@ -128,7 +134,7 @@ dcos task log --follow dcos-java-sample
 
 4) Watch progress of deployment
 
-a) Check on-going deployments
+Check on-going deployments
 
 ```
 dcos marathon deployment list
@@ -141,6 +147,26 @@ dcos marathon deployment watch --interval=1 <deployment_id>
 ```
 
 5) Reach the service (on `Vagrant`) using URL: `http://192.168.65.60:10010/hello`
+
+6) Make deployment
+
+```
+dcos marathon app update /dcos-java-sample < devops/service.json
+```
+
+7) Make rollback
+
+Check on-going deployments
+
+```
+dcos marathon deployment list
+```
+
+and then:
+
+```
+dcos marathon deployment rollback <deployment_id>
+```
 
 ##### [Other operations](https://docs.mesosphere.com/1.10/cli/command-reference/)
 
