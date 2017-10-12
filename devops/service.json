@@ -10,12 +10,12 @@
         ]
       }
     },
-    "cpus": 0.25,
+    "cpus": 0.5,
     "instances": 2,
     "mem": 256,
     "healthChecks": [
       {
-        "gracePeriodSeconds": 90,
+        "gracePeriodSeconds": 30,
         "intervalSeconds": 5,
         "maxConsecutiveFailures": 3,
         "path": "/probe/health",
