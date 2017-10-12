@@ -263,3 +263,5 @@ ToDo: Comming soon
 * [DC/OS 101](https://dcos.io/docs/1.8/usage/tutorials/dcos-101/)
 
 * [How to scale-test your DCOS cluster](https://mesosphere.com/blog/scale-test-dcos-cluster/)
+
+* [Autoscaling](https://dcos.io/docs/1.7/usage/tutorials/autoscaling/)

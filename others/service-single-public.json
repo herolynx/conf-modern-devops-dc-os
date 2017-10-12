@@ -1,0 +1,30 @@
+{
+  "id": "dcos-java-sample-public",
+  "acceptedResourceRoles": [ "slave_public" ],
+  "container": {
+    "portMappings": [
+      {
+        "containerPort": 8080,
+        "hostPort": 10020,
+        "protocol": "tcp"
+      }
+    ],
+    "type": "DOCKER",
+    "docker": { "image": "mwrona/dcos-java-sample:0.0.1" }
+  },
+  "cpus": 0.5,
+  "instances": 1,
+  "mem": 256,
+  "networks": [ { "mode": "container/bridge" } ],
+  "healthChecks": [
+    {
+      "gracePeriodSeconds": 30,
+      "intervalSeconds": 5,
+      "maxConsecutiveFailures": 3,
+      "path": "/probe/health",
+      "portIndex": 0,
+      "protocol": "HTTP",
+      "timeoutSeconds": 5
+    }
+  ]
+}
