@@ -100,18 +100,6 @@ echo "oauth_enabled: 'false'" >> etc/config-{version}.yaml
 dcos marathon app add devops/service.json
 ```
 
-or if you want to try standalone option (without docker):
-
-```
-dcos marathon app add devops/service-no-docker.json
-```
-
-**Note**:
-
-Running a native java app requires that the application jar and the Java JRE be installed on the agent nodes. 
-
-For local `Vagrant` cluster use `DCOS_JAVA_ENABLED=true` when deploying the agent nodes to install both automatically (requires the JRE to be downloaded to <repo>/build/jre-*-linux-x64.tgz).
-
 2) Update application's property
 
 ```
@@ -137,6 +125,22 @@ dcos marathon app update /dcos-java-sample instances=3
 ```
 dcos task log --follow dcos-java-sample
 ```
+
+4) Watch progress of deployment
+
+a) Check on-going deployments
+
+```
+dcos marathon deployment list
+```
+
+and then:
+
+```
+dcos marathon deployment watch --interval=1 <deployment_id>
+```
+
+5) Reach the service (on `Vagrant`) using URL: `http://192.168.65.60:10010/hello`
 
 ##### [Other operations](https://docs.mesosphere.com/1.10/cli/command-reference/)
 

@@ -1,24 +1,21 @@
 {
     "id": "dcos-java-sample",
-    "acceptedResourceRoles": [ "slave_public" ],
     "container": {
-      "portMappings": [
-        {
-          "containerPort": 8080,
-          "hostPort": 80,
-          "protocol": "tcp"
-        }
-      ],
       "type": "DOCKER",
-      "docker": { "image": "mwrona/dcos-java-sample:0.0.1" }
+      "docker": {
+        "image": "mwrona/dcos-java-sample:0.0.1",
+        "network": "BRIDGE",
+        "portMappings": [
+          { "hostPort": 0, "containerPort": 8080, "servicePort": 10010 }
+        ]
+      }
     },
-    "cpus": 0.5,
+    "cpus": 0.25,
     "instances": 2,
     "mem": 256,
-    "networks": [ { "mode": "container/bridge" } ],
     "healthChecks": [
       {
-        "gracePeriodSeconds": 30,
+        "gracePeriodSeconds": 90,
         "intervalSeconds": 5,
         "maxConsecutiveFailures": 3,
         "path": "/probe/health",
@@ -26,5 +23,12 @@
         "protocol": "HTTP",
         "timeoutSeconds": 5
       }
-    ]
+    ],
+    "labels":{
+      "HAPROXY_DEPLOYMENT_GROUP":"dcos-java-sample",
+      "HAPROXY_DEPLOYMENT_ALT_PORT":"10011",
+      "HAPROXY_GROUP":"external",
+      "HAPROXY_0_REDIRECT_TO_HTTPS":"true",
+      "HAPROXY_0_VHOST": "192.168.65.111"
+    }
 }
