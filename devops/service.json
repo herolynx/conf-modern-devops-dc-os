@@ -6,7 +6,12 @@
         "image": "mwrona/dcos-java-sample:0.0.1",
         "network": "BRIDGE",
         "portMappings": [
-          { "hostPort": 0, "containerPort": 8080, "servicePort": 10010 }
+          {
+            "hostPort": 0,
+            "containerPort": 8080,
+            "servicePort": 10010,
+            "protocol": "tcp"
+          }
         ]
       }
     },
@@ -29,6 +34,12 @@
       "HAPROXY_DEPLOYMENT_ALT_PORT":"10011",
       "HAPROXY_GROUP":"external",
       "HAPROXY_0_REDIRECT_TO_HTTPS":"true",
-      "HAPROXY_0_VHOST": "192.168.65.111"
+      "HAPROXY_0_VHOST": "dcos-java-sample.mesosphere.com",
+      "HAPROXY_0_MODE": "TCP"
+    },
+    "env": {
+      "PING_MESSAGE": "Greetings DC/OS fans!",
+      "DB_USERNAME": "herolynx",
+      "DB_PASSWORD": "to the rescue!"
     }
 }

@@ -19,6 +19,7 @@ The purposes of this demo & presentation is to show how micro-services can be ma
 * rollback & rolling update
 * config management
 * web-socket support (with TCP connections load balancing)
+* monitoring & log aggregation
 
 ## API
 
@@ -148,7 +149,7 @@ dcos marathon deployment watch --interval=1 <deployment_id>
 
 5) Reach the service (on `Vagrant`) using URL: `http://192.168.65.60:10010/hello`
 
-6) Make deployment
+6) Make deployment & config update
 
 ```
 dcos marathon app update /dcos-java-sample < devops/service.json
@@ -166,6 +167,12 @@ and then:
 
 ```
 dcos marathon deployment rollback <deployment_id>
+```
+
+8) Update config
+
+```
+dcos marathon app update /dcos-java-sample < devops/config.json
 ```
 
 ##### [Other operations](https://docs.mesosphere.com/1.10/cli/command-reference/)
@@ -256,7 +263,15 @@ Template for [AWS CloudFromattion](https://downloads.dcos.io/dcos/EarlyAccess/co
 
 ## Monitoring
 
-ToDo: Comming soon
+##### DataDog
+
+```
+dcos package install datadog --options=monitoring/datadog.json
+```
+
+Docs:
+
+* [How to use Datadog with DC/OS](https://github.com/dcos/examples/tree/master/datadog/1.9)
 
 ## Other docs
 
@@ -265,3 +280,5 @@ ToDo: Comming soon
 * [How to scale-test your DCOS cluster](https://mesosphere.com/blog/scale-test-dcos-cluster/)
 
 * [Autoscaling](https://dcos.io/docs/1.7/usage/tutorials/autoscaling/)
+
+* [DNS](https://dcos.io/docs/1.10/networking/mesos-dns/)

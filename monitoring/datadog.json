@@ -1,0 +1,6 @@
+{
+  "datadog": {
+    "api_key": $YOUR_API_KEY,
+    "instances": 1
+  }
+}

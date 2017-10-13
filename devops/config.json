@@ -1,0 +1,7 @@
+{
+    "env": {
+      "PING_MESSAGE": "Greetings DC/OS fans and monkeys!",
+      "DB_USERNAME": "herolynx",
+      "DB_PASSWORD": "to the rescue!"
+    }
+}
