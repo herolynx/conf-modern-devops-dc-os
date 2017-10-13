@@ -266,7 +266,7 @@ Template for [AWS CloudFromattion](https://downloads.dcos.io/dcos/EarlyAccess/co
 ##### DataDog
 
 ```
-dcos package install datadog --options=monitoring/datadog.json
+dcos package install datadog --options=monitoring/datadog.json --yes
 ```
 
 Docs:
